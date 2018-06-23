@@ -115,6 +115,17 @@
             <version>2.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.3</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+        </dependency>
     </dependencies>
 
     <build>
