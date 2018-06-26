@@ -18,16 +18,16 @@ public class HealthEndpointIT {
 
     @Test
     public void testEndpoint() throws Exception {
-//        System.out.println("Testing endpoint " + url);
-//        int maxCount = 30;
-//        int responseCode = makeRequest();
-//        for(int i = 0; (responseCode != 200) && (i < maxCount); i++) {
-//          System.out.println("Response code : " + responseCode + ", retrying ... (" + i + " of " + maxCount + ")");
-//          Thread.sleep(5000);
-//          responseCode = makeRequest();
-//        }
-//        assertTrue("Incorrect response code: " + responseCode, responseCode == 200);
-    	assertTrue(true);
+        System.out.println("Testing endpoint " + url);
+        int maxCount = 30;
+        int responseCode = makeRequest();
+        for(int i = 0; (responseCode != 200) && (i < maxCount); i++) {
+          System.out.println("Response code : " + responseCode + ", retrying ... (" + i + " of " + maxCount + ")");
+          Thread.sleep(5000);
+          responseCode = makeRequest();
+        }
+        assertTrue("Incorrect response code: " + responseCode, responseCode == 200);
+//    	assertTrue(true);
     }
 
     private int makeRequest() {

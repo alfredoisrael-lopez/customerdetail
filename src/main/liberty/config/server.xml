@@ -1,37 +1,43 @@
 <server description="Customer Detail Server">
 
-  <featureManager>
-      <feature>microprofile-1.2</feature>
-      <feature>jndi-1.0</feature>
-      <feature>jsp-2.3</feature>
-      <feature>servlet-3.1</feature>
-      <feature>managedBeans-1.0</feature>
-      <feature>websocket-1.1</feature>
-      <feature>jaxrs-2.0</feature>
-	  <feature>jsonp-1.0</feature>
-	  <feature>apiDiscovery-1.0</feature>
-      <feature>jdbc-4.1</feature>
-  </featureManager>
+	<featureManager>
+		<feature>microprofile-1.2</feature>
+		<feature>jndi-1.0</feature>
+		<feature>jsp-2.3</feature>
+		<feature>servlet-3.1</feature>
+		<feature>managedBeans-1.0</feature>
+		<feature>websocket-1.1</feature>
+		<feature>jaxrs-2.0</feature>
+		<feature>jsonp-1.0</feature>
+		<feature>apiDiscovery-1.0</feature>
+		<feature>jdbc-4.1</feature>
+	</featureManager>
 
-  <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
-      id="defaultHttpEndpoint" host="*" />
+	<httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
+		id="defaultHttpEndpoint" host="*" />
 
+	<keyStore id="defaultKeyStore" password="password"/>
 
-    <library id="MySQLLib">
-		<fileset dir="${shared.resource.dir}/lib" includes="*.jar" scanInterval="5s" />
+	<basicRegistry id="basic" realm="ibm/api">
+		<user name="guest" password="password" />
+	</basicRegistry>
+
+	<library id="MySQLLib">
+		<fileset dir="${shared.resource.dir}/lib" includes="*.jar"
+			scanInterval="5s" />
 	</library>
 
 	<dataSource jndiName="jdbc/customers" transactional="true"
 		id="datasource">
 		<jdbcDriver libraryRef="MySQLLib" />
-		<properties user="root" password="OnaogzaOmm" databaseName="customers" URL="jdbc:mysql://mycluster2.ap-south.containers.mybluemix.net:30916/customers" />
-    </dataSource>
-  <!-- Automatically expand WAR files and EAR files -->
-  <applicationManager autoExpand="true"/>
+		<properties user="root" password="OnaogzaOmm" databaseName="customers"
+			URL="jdbc:mysql://mycluster2.ap-south.containers.mybluemix.net:30916/customers" />
+	</dataSource>
+	<!-- Automatically expand WAR files and EAR files -->
+	<applicationManager autoExpand="true" />
 
-  <webApplication name="customerdetail" location="${app.location}"/>
-  
-  <!--  <logging maxFiles="100" maxFileSize="10"
-     consoleLogLevel="ERROR"/> -->
+	<webApplication name="customerdetail" location="${app.location}" />
+
+	<!-- <logging maxFiles="100" maxFileSize="10" consoleLogLevel="ERROR"/> -->
 
 </server>
