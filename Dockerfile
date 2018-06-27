@@ -2,7 +2,7 @@ FROM websphere-liberty:webProfile7
 MAINTAINER IBM Java engineering at IBM Cloud
 COPY /target/liberty/wlp/usr/servers/defaultServer /config/
 COPY /target/liberty/wlp/usr/shared/resources /config/resources/
-RUN mkdir /config/resources/lib; cd /config/resources/lib; wget https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar
+RUN mkdir /config/resources/lib; cd /config/resources/lib; curl -O https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.46/mysql-connector-java-5.1.46.jar
 COPY /src/main/liberty/config/jvmbx.options /config/jvm.options
 # Install required features if not present, install APM Data Collector
 RUN installUtility install --acceptLicense defaultServer && installUtility install --acceptLicense apmDataCollector-7.4
